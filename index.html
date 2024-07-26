@@ -4,32 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/fc1e806183.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="index.css">
-    <script defer src="index.js"></script>
+    <script defer src="app.js"></script>
 </head>
 <body>
     <section id="landing__page">
-    <img src="https://media.istockphoto.com/id/157284152/photo/housing-development-under-construction.jpg?s=612x612&w=0&k=20&c=k7JAncIfye7hbRdEeYtY0JyEsRXDa2YfuKvh4zwUH6k="" class="background-photo" alt="">
-    <nav class="navbar">
-        <div class="logo__wrapper">
-            <img src="./assets/Tim.png" class="agent__photo" alt="Picture of Agent">
-            <img src="./assets/personal logo.png" class="personal__logo" alt="Personal Logo">
+        <img src="https://media.istockphoto.com/id/157284152/photo/housing-development-under-construction.jpg?s=612x612&w=0&k=20&c=k7JAncIfye7hbRdEeYtY0JyEsRXDa2YfuKvh4zwUH6k=" class="background-photo" alt="Housing Development">
+        <nav class="navbar">
+            <div class="logo__wrapper">
+                <img src="./assets/Tim.png" class="agent__photo" alt="Picture of Agent">
+                <img src="./assets/personal logo.png" class="personal__logo" alt="Personal Logo">
+            </div>
+            <ul class="nav__list">
+                <li class="nav__link">
+                    <a href="#" class="nav__link--anchor">HOME</a>
+                    <a href="#" class="nav__link--anchor">FIND YOUR HOME</a>
+                    <button class="nav_btn">CONTACT</button>
+                </li>
+            </ul>        
+        </nav>
+        <div class="header__wrapper">
+            <h1 class="header">FIND YOUR NEW HOME</h1>
+            <div class="holder">
+                
+                <div class="id"></div>
+                <div class="City"></div>
+                <div class="City"></div>
+                <div class="City"></div>
+                <input class="text" type="text" id="location" placeholder="City, ST or Zip Code" required><!--onchange="onSearch(event)"-->
+                <button id="searchBtn"><i class="fas fa-magnifying-glass"></i></button>
+            </div>
         </div>
-    <ul class="nav__list">
-            <li class="nav__link">
-                <a href="#" class="nav__link--anchor">HOME</a>
-                <a href="#" class="nav__link--anchor">FIND YOUR HOME</a>
-                <button class="nav_btn">CONTACT</button>
-            </li>
-        </ul>        
-    </nav>
-    <div class="header__wrapper">
-        <h1 class="header">FIND YOUR NEW HOME</h1>
-        <div class="holder">
-        <label for="input">Address, City and State or Zipcode</label>
-        <input class="text" name="location" type="text" required ></input>
+        
+            <h1 class="sub-header">Search Results for <b class="blue" id="searchTerm">input data</b></h1>
         </div>
-    </div>
+        <div id="results" class="results-container"></div>
+    </section>
+    <section id="listings__page">
+        <div class="row__search">
+            <div class="filter__price">
+                <label for="minPrice">Min Price</label>
+                <input type="number" id="minPrice" placeholder="Min Price">
+                <label for="maxPrice">Max Price</label>
+                <input type="number" id="maxPrice" placeholder="Max Price">
+            </div>
+                <div class="filter__bedrooms">
+                <label for="minBedrooms">Min Bedrooms</label>
+                <input type="number" id="minBedrooms" placeholder="Min Bedrooms">
+                <label for="maxBedrooms">Max Bedrooms</label>
+                <input type="number" id="maxBedrooms" placeholder="Max Bedrooms">
+            </div>
+            <div class="filter__baths">
+                <label for="minBaths">Min Baths</label>
+                <input type="number" id="minBaths" placeholder="Min Baths">
+                <label for="maxBaths">Max Baths</label>
+                <input type="number" id="maxBaths" placeholder="Max Baths">
+            </div>
+            <div class="filter__size">
+                <label for="minBaths">Min Sq Ft</label>
+                <input type="number" id="minSize" placeholder="Min Baths">
+                <label for="maxBaths">Max Sq Ft</label>
+                <input type="number" id="maxSize" placeholder="Max Baths">
+            </div>
+            
+            <button onclick="applyFilters()">Apply Filters</button>
+        </div>   
+        <div id="results"></div>
     </section>
 </body>
 </html>
+
+
+
