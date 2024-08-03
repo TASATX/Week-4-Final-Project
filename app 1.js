@@ -13,4 +13,3 @@ async function fetchData() {
 }
 fetchData();
 fetchData();  */
-clearIntervalgit status
