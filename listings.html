@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Search</title>
-        <script src="https://kit.fontawesome.com/fc1e806183.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="index.css">
-        <script defer src="index.js"></script>
-        <script defer src="homepg.js"></script>
-        <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-        <script type="text/javascript">
-          (function(){
-            emailjs.init("YOUR_USER_ID");
-          })();
-        </script>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Listings</title>
+    <link rel="stylesheet" href="listings.css">
+    <script defer src="listings.js"></script>
+    <script defer src="homepg.js"></script>
+</head>
 <body>
     <section id="landing__page">
         <img src="https://media.istockphoto.com/id/157284152/photo/housing-development-under-construction.jpg?s=612x612&w=0&k=20&c=k7JAncIfye7hbRdEeYtY0JyEsRXDa2YfuKvh4zwUH6k=" class="background-photo" alt="Housing Development">
@@ -29,12 +21,12 @@
                     <a href="homepg.html" class="nav__link--anchor">HOME</a>
                 </li>
                 <li class="nav__link">
-                <a
+                  <a
                     href="index.html"
                     class="nav__link--anchor">FIND YOUR HOME</a>
                 </li>
                 <li class="nav__link" onclick="toggleModal()">
-                <a
+                  <a
                     href="#"
                     class="nav__link--anchor 
                     link__hover-effect 
@@ -43,20 +35,6 @@
                 </li>
             </ul>        
         </nav>
-      
-
-        <div class="header__wrapper">
-            <h1 class="header">FIND YOUR NEW HOME</h1>
-            <h2 class="sub__header">Enter City, ST or Zip Code</h2>
-            <div class="homes-list">              
-                <div class="id"></div>
-                <div class="City"></div>
-                <div class="State"></div>
-                <div class="ZipCode"></div>
-                <input class="text" type="text" id="location" name="location" placeholder="City, ST or Zip Code" required> 
-                <button id="searchBtn"><i class="fas fa-magnifying-glass"></i></button>
-            </div>
-        </div>
         <div class="modal">
             <a href="" class="modal__half modal__about">                   
                       
@@ -125,62 +103,104 @@
               </div>
             </div>
           </div>
-            <h1 class="sub-header">Search Results for <b class="blue" id="searchTerm">Input City, ST or Zip Code</b></h1>
-        </div>
-        <div id="results" class="results-container"></div>
-    
-        <footer>
-            <div class="row row__column">
-          <a href="#">
-            <figure class="footer__logo">
-              <img src="./assets/personal logo.png" class="footer__logo--img" alt="">
-            </figure>
-          </a>
-          <div class="footer__list">
-            <a href="#" class="footer__link">Home</a>
-            <a href="#About" class="footer__link">About</a>
-            <a href="index.html" class="footer__link">Find Your Home</a>
-            <a href="#" class="footer__link">Contact</a>
-          </div>
-          <div class="footer__copyright">Copyright &copy; 2024 by Tim Smith</div>
-          <div class="footer__icons">
-            <div class="footer__social--list">
-                <a href="https://github.com/TASATX" target="_blank" class="
-                footer__social--link
-                link__hover-effect
-                link__hover-effect--white
-                ">
-                GitHub
-                </a>
-        
-                <a href="https://www.linkedin.com/in/timothy-smith-89928864" target="_blank" class="
-                footer__social--link
-                link__hover-effect
-                link__hover-effect--white
-                ">
-                LinkedIn
-                </a>
-                <a href="#" class=" 
-                footer__social--link
-                footer__link--hover-effect
-                link__hover-effect--white
-                "onclick='toggleModal()'>
-                Email
-                </a>
-          
-                <a href="./assets/Full Resume.docx.pdf" target="_blank" class="
-                footer__social--link
-                link__hover-effect
-                link__hover-effect--white
-                ">
-                Resume
-                </a>
+        <div class="row__search">
+            <label class="filters__label" for="filters">FILTERS</label>
+        </div> 
+        <div class="row__filters">
+            <div class="filter__price">
+                <div class="min_price">
+                    <input type="number" id="minPrice"  value="150000" step="10000" placeholder="Min Price">
+                </div>
+                <div class="max_price">
+                    <input type="number" id="maxPrice" value="250000" step="10000" placeholder="Max Price">
+                </div>
             </div>
+                <div class="filter__bedrooms">
+                    <div class="min_bedrooms">
+                    <input type="number" id="minBedrooms" placeholder="Min Bedrooms">
+                </div>
+                <div class="max_bedrooms">
+                    <input type="number" id="maxBedrooms" placeholder="Max Bedrooms">
+                </div>
+            </div>
+            <div class="filter__baths">
+                <div class="min_price">
+                    <input type="number" id="minBaths" placeholder="Min Baths">
+                </div>
+                <div class="max_baths">
+                    <input type="number" id="maxBaths" placeholder="Max Baths">
+                </div>
+                </div>
+            <div class="filter__size">
+                <div class="min_size">
+                    <input type="number" id="minSize" placeholder="Min SQ FT">
+                </div>
+                <div class="max_size">
+                    <input type="number" id="maxSize" placeholder="Max SQ FT">
+                </div>
+            </div>
+            
+            <button id="filterButton" class="filter__btn">Apply Filters</button>
+        </div>  
+        <div id="results">
+            <img src="https://scontent-hou1-1.xx.fbcdn.net/v/t39.30808-6/340107546_185705703808689_2395695027353564913_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2ne8MSMDGogQ7kNvgEaHnoe&_nc_ht=scontent-hou1-1.xx&oh=00_AYCicIa_43GO0EoGnbgAhr_baR3yiOgi3WZvfQ2qzpep9Q&oe=66A9CED9" alt="" class="image__location">
         </div>
+    </section>
+    <section id="listings__page">
+        
+    </section>
+    <footer>
+        <div class="row row__column">
+      <a href="#">
+        <figure class="footer__logo">
+          <img src="./assets/personal logo.png" class="footer__logo--img" alt="">
+        </figure>
+      </a>
+      <div class="footer__list">
+        <a href="#" class="footer__link">Home</a>
+        <a href="#About" class="footer__link">About</a>
+        <a href="index.html" class="footer__link">Find Your Home</a>
+        <a href="#" class="footer__link">Contact</a>
       </div>
-    </footer> 
+      <div class="footer__copyright">Copyright &copy; 2024 by Tim Smith</div>
+      <div class="footer__icons">
+        <div class="footer__social--list">
+            <a href="https://github.com/TASATX" target="_blank" class="
+            footer__social--link
+            link__hover-effect
+            link__hover-effect--white
+            ">
+            GitHub
+            </a>
+    
+            <a href="https://www.linkedin.com/in/timothy-smith-89928864" target="_blank" class="
+            footer__social--link
+            link__hover-effect
+            link__hover-effect--white
+            ">
+            LinkedIn
+            </a>
+            <a href="#" class=" 
+            footer__social--link
+            footer__link--hover-effect
+            link__hover-effect--white
+            "onclick='toggleModal()'>
+            Email
+            </a>
+      
+            <a href="./assets/Full Resume.docx.pdf" target="_blank" class="
+            footer__social--link
+            link__hover-effect
+            link__hover-effect--white
+            ">
+            Resume
+            </a>
+        </div>
+    </div>
+  </div>
+</footer> 
 </body>
 </html>
 
-
-
+</body>
+</html>

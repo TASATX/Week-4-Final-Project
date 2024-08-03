@@ -1,106 +1,92 @@
-// API KEY   	3ed55eb237fc74541d928d2bb9e04ecb
-
-/* scripts.js
-
-document.addEventListener('DOMContentLoaded', () => {
-const applyFiltersButton = document.getElementById('applyFilters');
-
-applyFiltersButton.addEventListener('click', () => {
-    const filters = document.querySelectorAll('.filter-item');
-    filters.forEach(filter => {
-    const minInput = filter.querySelector('input[type="number"]:first-of-type');
-    const maxInput = filter.querySelector('input[type="number"]:last-of-type');
-
-    const minValue = (minInput.value);
-    const maxValue = (maxInput.value);
-
-    if (minValue > maxValue) {
-        alert('Minimum value cannot be greater than maximum value');
-        return;
-    }
-
-    // Apply your filter logic here
-    console.log(`Filtering ${filter.querySelector('label').textContent} from ${minValue} to ${maxValue}`);
-    });
-});
-});
-  
-
-document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById('location');
-    const label = input.previousElementSibling;
-  
-    input.addEventListener('input', () => {
-      if (input.value.trim() !== '') {
-        label.classList.add('hidden');
-      } else {
-        label.classList.remove('hidden');
-      }
-    });
-  });
-
 document.addEventListener('DOMContentLoaded', () => {
     const searchBtn = document.getElementById('searchBtn');
     const locationInput = document.getElementById('location');
-    const searchTerm = document.getElementById('searchTerm');
+    const resultsContainer = document.getElementById('results');
+    const subHeader = document.querySelector('.sub__header');
 
-searchBtn.addEventListener('click', async () => {
-    const location = locationInput.value.trim();
-    if (!location) {
-        alert('Please enter a city and state or a zip code.');
-        return;
-    }
+    searchBtn.addEventListener('click', async () => {
+        const searchValue = locationInput.value.trim().toLowerCase();
+        if (searchValue) {
+            subHeader.innerHTML = `Search Results for <b class="blue">${searchValue}</b>`;
+            localStorage.setItem('searchParam', searchValue);
 
-  /*     let query = '';
-        const zipCodePattern = /^\d{5}(?:[-\s]\d{4})?$/;
-        if (zipCodePattern.test(location)) {
-            // Input is a zip code
-            query = `address2=${encodeURIComponent(location)}`;
-            console.log('Input is a zip code:', query);
-        } else {
-            // Input is assumed to be city, state
-            const parts = location.split(',').map(part => part.trim());
-            if (parts.length !== 2) {
-                alert('Please enter a valid city and state.');
-                return;
-            }
-            const [city, state] = parts;
-            query = `address2=${encodeURIComponent(city)},${encodeURIComponent(state)}`;
-            console.log('Input is a city and state:', query);
-        }
-
-        searchTerm.textContent = location; 
-
-        async function fetchPropertyDetails(query) {
-            const url = `https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/detail?${query}`;
-            const options = {
-                method: 'GET',
-                headers: {
-                    'accept': 'application/json',
-                    'apikey': '3ed55eb237fc74541d928d2bb9e04ecb'
-                }
-            };
-        
             try {
-                const response = await fetch(url, options);
+                const response = await fetch('https://retoolapi.dev/t7khno/data/');
                 if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+                    throw new Error("Requested resource not found");
                 }
-                const data = await response.json();
-                console.log(data);
-                } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        }
-        
-        // Example usage of the async function
-        const query = 'address=123%20Main%20St&city=Anytown&state=CA&zip=12345';
-        fetchPropertyDetails(query);
-        
-  });  
-});  
 
-function showProperties(id) {
-    localStorage.setItem("Id", id);
-    window.location.href = `${window.location.origin}/user.html`; 
-}  */
+                const data = await response.json();
+                console.log('All data:', data);
+
+                function filterHomes() {
+                    let filteredHomes = [];
+                  
+                    if (searchValue.includes(',')) {
+                    const [city, state] = searchValue.split(',').map(item => item.trim().toLowerCase());
+                    filteredHomes = data.filter((home) => {
+                        return (
+                          home.City.toLowerCase() === city &&
+                          home.State.toLowerCase() === state
+                        );
+                      });
+                    } else {
+                      filteredHomes = data.filter((home) => {
+                        return (
+                          home.City.toLowerCase().includes(searchValue) ||
+                          home.State.toLowerCase().includes(searchValue) ||
+                          home.ZipCode.includes(searchValue)
+                        );
+                      });
+                    }
+
+                console.log('Filtered data:', filteredHomes);
+
+                const homeIds = filteredHomes.map(home => home.id);
+                localStorage.setItem('filteredHomeIds', JSON.stringify(homeIds));
+
+                displayHomes(filteredHomes);
+
+            } 
+            filterHomes();
+
+        }       catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+                resultsContainer.innerHTML = '<p>Failed to load homes.</p>';
+            }
+
+            window.location.href = 'listings.html';
+
+        } else {
+            alert('Please enter a City, ST or Zip Code.');
+        }
+        console.log(searchValue);
+    });
+});
+
+    function displayHomes(homes) {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = ''; 
+
+        if (homes.length > 0)  {
+            homes.forEach(home => {
+            const homeElement = document.createElement('div');
+            homeElement.className = 'home-item';
+            homeElement.innerHTML = `
+                <p>City: ${home.City}</p>
+                <p>State: ${home.State}</p>
+                <p>ZipCode: ${home.ZipCode}</p>
+            `;
+            resultsContainer.appendChild(homeElement);
+            });            
+        } else {    
+            resultsContainer.innerHTML = '<p> No Homes Found.</p>';
+
+    }
+} 
+
+
+
+
+
+ 

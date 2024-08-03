@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script></script>
+    <title>Realtor Homepage</title>
+    <script src="https://kit.fontawesome.com/fc1e806183.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="homepg.css">
+    <script src="homepg.js"></script>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+      </script>
+</head>
+<body>
+    <section id="landing__page">
+        <img src="https://media.istockphoto.com/id/157284152/photo/housing-development-under-construction.jpg?s=612x612&w=0&k=20&c=k7JAncIfye7hbRdEeYtY0JyEsRXDa2YfuKvh4zwUH6k=" class="background-photo" alt="Housing Development">
+        <nav class="navbar">
+            <div class="logo__wrapper">
+                <img src="./assets/Tim.png" class="agent__photo" alt="Picture of Agent">
+                <img src="./assets/personal logo.png" class="personal__logo" alt="Personal Logo">
+            </div>
+            <ul class="nav__link--list">
+                <li class="nav__link">
+                    <a href="#About" class="nav__link--anchor">ABOUT US</a>
+                </li>
+                <li class="nav__link">
+                  <a
+                    href="index.html"
+                    class="nav__link--anchor">FIND YOUR HOME</a>
+                </li>
+                <li class="nav__link" onclick="toggleModal()">
+                  <a
+                    href="#"
+                    class="nav__link--anchor 
+                    link__hover-effect 
+                    link__hover-effect--aqua click"
+                    >CONTACT</a>
+                </li>
+            </ul>       
+        </nav>
+        <section id="Infopg">
+            <div class="row__experience">
+                <div class="info__wrapper">
+                    <h1 class="title">Experience in <span class="blue">Real Estate</span> and <span class="blue"> Home Building</span></h1>
+                    <h2 class="sub__title">First Time Buyer or Dream Home Seeker</h2>
+                    <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum, reiciendis veniam eius ex ut illo sed beatae animi eaque.</p>        
+                </div> 
+                    <img src="https://img.freepik.com/free-photo/villa-house-model-key-drawing-retro-desktop-real-estate-sale-concept_1387-310.jpg" alt="Promo Picture 1" class="real-estate__photo">
+            </div>
+            <div class="row__technology">
+              <div class="tech__wrapper">
+                  <h1 class="title">We Use  <span class="blue">Technology</span> to Find the <span class="blue"> Home You Want</span></h1>
+                  <h2 class="sub__title">We use all the tools!</h2>
+                  <p class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem illum, reiciendis veniam eius ex ut illo sed beatae animi eaque.</p> 
+              </div>
+                  <img src="data:image/jpeg;base64,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" alt="Promo Picture 2" class="real-estate__photo-2">
+            </div>
+            <div class="modal">
+                <a href="" class="modal__half modal__about">                   
+                          
+                  <h3 class="modal__title modal__title--about">Just a bit about me.</h3>
+                  <h4 class="modal__sub-title modal__sub-title--about">
+                    Real Estate Agent and Home Builder
+                  </h4>
+                  <p class="modal__para">
+                    I am a <b class="aqua">Real Estate Agent</b>, with years of <b class="aqua">experience in management and project management</b> in the Home Building Industry.
+                    <br>
+                    I have become a <b class="aqua">software engineer</b> to add value to my background and leadership skills.
+                    
+                  </p>              
+                  <div class="modal__languages">
+                    <figure class="modal__language">
+                      <img class="modal__language--img"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+                      alt="">
+                      <span class="language__name">HTML</span>
+                    </figure>        
+                    <figure class="modal__language">
+                      <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png"
+                        alt="">
+                        <span class="language__name">CSS</span>
+                    </figure>        
+                    <figure class="modal__language">
+                      <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png"
+                      alt="">
+                      <span class="language__name">JavaScript</span>
+                    </figure>
+                    <figure class="modal__language">
+                      <img class="modal__language--img" src="https://cdn.iconscout.com/icon/free/png-256/react-3-1175109.png"
+                        alt="">
+                        <span class="language__name">React</span>
+                    </figure>
+                  </div>
+                </a>
+                <div class="modal__half modal__contact">
+                  <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+                  <h3 class="modal__title modal__title--contact">
+                    Let's chat!
+                  </h3>
+                  <h3 class="modal__sub-title modal__sub-title--contact">
+                    I'm currently open to new opportunities
+                  </h3>
+                  <form id="contact__form" onsubmit="contact(event)" class="form">
+                    <div class="form__item">
+                      <label class="form__item--label">Name</label>
+                      <input class="input" name="user_name" type="text" required ></input>
+                    </div>
+                    <div class="form__item">
+                      <label class="form__item--label">Email</label>
+                      <input class="input" name="user_email" type="email" required ></input>
+                    </div>
+                    <div class="form__item">
+                      <label class="form__item--label">Message</label>
+                      <textarea class="input" name="message" type="text" required></textarea>
+                    </div>          
+                  <button id="contact__submit" class="form__submit" >Send it to me</button>
+                  </form>
+                  <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa fa-spinner"></i>
+                  </div>
+                  <div class="modal__overlay modal__overlay--success">
+                    Thank you for the message! I'm looking forward to speaking with you soon.
+                  </div>
+                </div>
+              </div>
+        </section>
+                
+        <section id="About">
+            <h1 class="pg__title"><span class="blue">35 Years</span> in Real Estate Across<span class="blue"> America</span></h1>
+            <h2 class="pg__sub-title">It has been an <span class="blue">Honor</span> to help Families begin to build <span class="blue">Generational Wealth</span></h2>
+            <p class="pg__info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque eius, nobis repellat perspiciatis recusandae, aliquid incidunt autem aperiam debitis iusto quo, harum temporibus rerum distinctio vero. Deleniti eveniet sed enim quod corporis illo in quos.</p>
+        </section>
+        <footer>
+            <div class="row row__column">
+          <a href="#">
+            <figure class="footer__logo">
+              <img src="./assets/personal logo.png" class="footer__logo--img" alt="">
+            </figure>
+          </a>
+          <div class="footer__list">
+            <a href="#" class="footer__link">Home</a>
+            <a href="#About" class="footer__link">About</a>
+            <a href="index.html" class="footer__link">Find Your Home</a>
+            <a href="#" class="footer__link">Contact</a>
+          </div>
+          <div class="footer__copyright">Copyright &copy; 2024 by Tim Smith</div>
+          <div class="footer__icons">
+            <div class="footer__social--list">
+                <a href="https://github.com/TASATX" target="_blank" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                GitHub
+                </a>
+        
+                <a href="https://www.linkedin.com/in/timothy-smith-89928864" target="_blank" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                LinkedIn
+                </a>
+                <a href="#" class=" 
+                footer__social--link
+                footer__link--hover-effect
+                link__hover-effect--white"
+                onclick="toggleModal()">
+                Email
+                </a>
+          
+                <a href="./assets/Full Resume.docx.pdf" target="_blank" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                Resume
+                </a>
+            </div>
+        </div>
+      </div>
+    </footer> 
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
