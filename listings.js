@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p><strong>Price:</strong> ${item.Price}</p>
                         <p><strong>Bedrooms:</strong> ${item.Bedrooms}</p>
                         <p><strong>Baths:</strong> ${item.Baths}</p>
-                        <p><strong>Living Sq Ft:</strong> ${item.LivingSqFt}</p>
+                        <p><strong>Living Sq Ft:</strong> ${item.Size}</p>
                     </div>
                 `;
                 resultsContainer.appendChild(itemBlock);
@@ -122,3 +122,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById('filterButton').addEventListener('click', applyFilters);
 });
+
+function openMenu() {
+    document.body.classList += " menu--open"
+  }
+  
+  function closeMenu() {
+    document.body.classList.remove('menu--open')
+  }
