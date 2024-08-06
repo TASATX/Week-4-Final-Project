@@ -34,7 +34,6 @@ body {
 
 #landing__page {
     width: 100%;
-    max-width: 1200px;
     min-height: 100vh;
     position: relative;
     background-color: #e6f7ff;
@@ -197,9 +196,9 @@ color: white;
 
 .row__search {
   width: 100%;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
+  margin-bottom: 24px;
 }
 
 .filters__label {  
@@ -212,6 +211,7 @@ color: white;
   max-width: 1200px;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .filter__price,
@@ -253,7 +253,7 @@ color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-top: 24px;
     margin-right: 24px;
     text-align: center;
 }
